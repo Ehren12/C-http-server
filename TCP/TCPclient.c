@@ -19,7 +19,7 @@ main(void)
     struct sockaddr_in server_address;
     server_address.sin_addr.s_addr = INADDR_ANY;
     server_address.sin_family = AF_INET;
-    server_address.sin_port = htons(3490);
+    server_address.sin_port = htons(5001);
     // Connect to socket (server)
     // connect and store connection status in variable
     int connection_status = connect(socketfd, (struct sockaddr *)&server_address, sizeof server_address);
