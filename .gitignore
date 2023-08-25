@@ -4,19 +4,22 @@
 # Unignore all with extensions
 !*.*
 
+# Unignore Makefile
+!Makefile
+
 # Unignore all dirs
 !*/
 
 ### Above combination will ignore all files without extension ###
 
-# Ignore files with extension `.class` & `.exe`
+# Ignore files with extension `.class` `.exe` and `.o`
 *.class
 *.exe
+*.o
 
 # Ignore `bin` dir
 bin/
 # or
 */bin/*
 
-# Unignore all `.exe` in `bin` dir
-!*/bin/*.exe
+
