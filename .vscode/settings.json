@@ -1,0 +1,10 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/ehren/Development /owlc_server/bin",
+            "binaryPath": "/home/ehren/Development /owlc_server/bin/server.o",
+            "binaryArgs": []
+        }
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
+}
