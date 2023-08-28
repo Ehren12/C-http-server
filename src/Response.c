@@ -7,21 +7,9 @@
 #include <unistd.h>
 #include "Response.h"
 #include "constants.h"
+#include "MimeTypes.h"
 
-struct MimeType
-{
-    char *key;
-    char *value;
-
-    struct MimeType *left, *right;
-};
-
-char *get_mime_type(char *file_ext);
-struct MimeType *initializeMime(char *key, char *value);
-struct MimeType *addMime(struct MimeType *root, char *key, char *value);
-struct MimeType *searchMime(struct MimeType *root, char *key);
-void in_order_trav_mime(struct MimeType *root);
-void dealloc_mimes(struct MimeType *node);
+static char *get_mime_type(char *file_ext);
 
 struct Response *load_resource(struct uriStruct *filename)
 {
@@ -81,7 +69,7 @@ struct Response *load_resource(struct uriStruct *filename)
     return response;
 }
 
-char *get_mime_type(char *file_ext)
+static char *get_mime_type(char *file_ext)
 {
     struct MimeType *initMime = initializeMime("html", "text/html");
     addMime(initMime, "css", "text/css");
@@ -101,76 +89,3 @@ char *get_mime_type(char *file_ext)
     return searched_mime->value;
 }
 
-struct MimeType *initializeMime(char *key, char *value)
-{
-    struct MimeType *node = (struct MimeType *)malloc(sizeof(struct MimeType));
-    node->key = key;
-    node->value = value;
-
-    node->left = node->right = NULL;
-    return node;
-}
-
-struct MimeType *addMime(struct MimeType *root, char *key, char *value)
-{
-    if (root == NULL)
-    {
-        return initializeMime(key, value);
-    }
-
-    if (strcmp(key, root->key) == 0)
-    {
-        printf("This MimeType exsists\n");
-    }
-    else if (strcmp(key, root->key) < 0)
-    {
-        root->left = addMime(root->left, key, value);
-    }
-    else if (strcmp(key, root->key) > 0)
-    {
-        root->right = addMime(root->right, key, value);
-    }
-
-    return root;
-}
-
-struct MimeType *searchMime(struct MimeType *root, char *key)
-{
-    if (root == NULL)
-    {
-        return NULL;
-    }
-
-    if (strcmp(root->key, key) == 0)
-    {
-        return root;
-    }
-    else if (strcmp(root->key, key) < 0) // Changed from > 0 to < 0
-    {
-        return searchMime(root->right, key);
-    }
-    else if (strcmp(root->key, key) > 0)
-    {
-        return searchMime(root->left, key);
-    }
-}
-
-void in_order_trav_mime(struct MimeType *root)
-{
-    if (root != NULL)
-    {
-        in_order_trav_mime(root->left);
-        printf("\n%s ==> %s\n", root->key, root->value);
-        in_order_trav_mime(root->right);
-    }
-}
-
-void dealloc_mimes(struct MimeType *node)
-{
-    if (node == NULL)
-        return;
-
-    dealloc_mimes(node->left);
-    dealloc_mimes(node->right);
-    free(node);
-}

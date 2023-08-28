@@ -1,6 +1,7 @@
 #include "Routes.h"
 #include "Response.h"
 #include "UrlParser.h"
+#include "constants.h"
 
 #include <unistd.h>
 #include <string.h>
@@ -19,17 +20,20 @@ char *get_filename_ext(char *filename)
 struct uriStruct *urlParser(char *route, struct RouteNode *initialRoute, int client_socketfd, char *method)
 {
     struct uriStruct *url = malloc(sizeof(struct uriStruct));
-    char viewRootDir[1000];
-    if (viewRootDir == NULL)
+    if (url == NULL)
+    {
+        perror("urlParser malloc");
         return NULL;
-    strcpy(viewRootDir, "view/");
+    }
+    char viewRootDir[1000];
+    strcpy(viewRootDir, ROOT_DIR);
 
     url->method = method;
     if (strstr(route, ".css") != NULL || strstr(route, ".js") != NULL)
     {
         strcat(viewRootDir, route);
         url->filePath = viewRootDir;
-        url->statusCode = "200 OK";
+        url->statusCode = SUCCESS;
         url->file_ext = "css";
         return url;
     }
@@ -37,15 +41,15 @@ struct uriStruct *urlParser(char *route, struct RouteNode *initialRoute, int cli
     struct RouteNode *destination = searchRoutes(initialRoute, route);
     if (destination == NULL)
     {
-        url->filePath = "OWLSERVER_NO_ROUTE";
-        url->statusCode = "404 Not Found";
-        url->file_ext = "NULL";
+        url->filePath = NON_EXSISTENT_ROUTE;
+        url->statusCode = NOT_FOUND;
+        url->file_ext = SUCCESS;
 
         return url;
     }
     strcat(viewRootDir, destination->value);
     url->filePath = viewRootDir;
-    url->statusCode = "200 OK";
+    url->statusCode = SUCCESS;
     url->file_ext = get_filename_ext(destination->value);
     printf("\n%s\n", url->filePath);
     return url;
