@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Iinclude
-DEPS = HTTP_Server.h
-exec = bin/server.o
+DEPS = HTTPserver.h
+exec = server.o
 sources = $(wildcard src/*.c)
 objects = $(sources:.c=.o)
 flags = -g -Wall -lm -ldl -fPIC -rdynamic -I./include
