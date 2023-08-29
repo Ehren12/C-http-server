@@ -1,9 +1,10 @@
 # HTTP Server in C 🖥️
 Very small flask-like HTTP web framework/server for serving static files
+
 https://youtu.be/eGPtBZ8_Cek
 ### Inspiration 💤
 I had just finished the last lecture in the [Harvard's CS50x Course](https://pll.harvard.edu/course/cs50-introduction-computer-science)
-and the obvious next step was the final project 😱 This was the moment I've been waiting for! I wanted to build something that was technical enough so I could showcase all the skillsets I aquired throughout the course 🛣️ I also wanted a project that will help me learn more concepts and technologies. At first I wanted to build a web app with Sveltekit (Javascript framework) and Firebase (Backend as a Service) 🔥However, I was already familiar with these technologies and it wouldn't have taken me out of my comfort zone, hence I decided to build something with C.
+and the obvious next step was the final project 😱 This was the moment I've been waiting for! I wanted to build something that was technical enough so I could showcase all the skillsets I acquired throughout the course 🛣️ I also wanted a project that would help me learn more concepts and technologies. At first, I wanted to build a web app with Sveltekit (Javascript framework) and Firebase (Backend as a Service) 🔥However, I was already familiar with these technologies and it wouldn't have taken me out of my comfort zone, so I decided to build something with C.
 
 ### About my C web-server
 If you actually took the time to read my `inspiration`, thanks 💖
@@ -30,7 +31,9 @@ After running the above you can now use the server by running
     ./server PORT
 Replace PORT with your desired port 🔁
 > 🔴It is required you are on Linux or at least running WSL2 on Windows. If you're on Mac, it may work, not entirely sure...
-Be sure to put all your static files you want to serve in the view folder
+
+
+‼️‼️ Be sure to put all the static files you want to serve in the view folder
 
 The project is open for any contributions and It will mean a lot to me if you decide to contribute or even open an issue ✍️
 
