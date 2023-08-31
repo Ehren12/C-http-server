@@ -1,7 +1,6 @@
 # HTTP Server in C 🖥️
 Very small flask-like HTTP web framework/server for serving static files
 
-https://youtu.be/eGPtBZ8_Cek
 ### Inspiration 💤
 I had just finished the last lecture in the [Harvard's CS50x Course](https://pll.harvard.edu/course/cs50-introduction-computer-science)
 and the obvious next step was the final project 😱 This was the moment I've been waiting for! I wanted to build something that was technical enough so I could showcase all the skillsets I acquired throughout the course 🛣️ I also wanted a project that would help me learn more concepts and technologies. At first, I wanted to build a web app with Sveltekit (Javascript framework) and Firebase (Backend as a Service) 🔥However, I was already familiar with these technologies and it wouldn't have taken me out of my comfort zone, so I decided to build something with C.
